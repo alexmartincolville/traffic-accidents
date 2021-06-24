@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres
+    ports:
+      - 5400:5432
+    environment:
+      POSTGRES_DB: "road_safety"
+      POSTGRES_USER: "masteruser"
+      POSTGRES_PASSWORD: "n5pVTk2u"
+
+  django:
+    restart: always
+    build: .
+    command: bash -c "
+        python traffic_accidents/manage.py setup_input
+        && python traffic_accidents/manage.py setup_dwh
+        && python traffic_accidents/manage.py runserver
+      "
+    container_name: api.django
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
