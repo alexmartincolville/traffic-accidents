@@ -16,10 +16,10 @@ def get_column_types(df):
     for i, j in zip(df.columns, df.dtypes):
         if "object" in str(j):
             type_dict.update({i: types.TEXT()})
-        if "datetime" in str(j):
-            type_dict.update({i: types.DateTime()})
+        if "date" in str(j):
+            type_dict.update({i: types.Date()})
         if "float" in str(j):
-            type_dict.update({i: types.Float(precision=3, asdecimal=True)})
+            type_dict.update({i: types.Float(precision=2, asdecimal=True)})
         if "int" in str(j):
             type_dict.update({i: types.INT()})
 

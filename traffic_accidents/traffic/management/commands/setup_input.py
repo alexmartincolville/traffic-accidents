@@ -1,4 +1,5 @@
 import os
+import gc
 import pandas as pd
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
@@ -35,8 +36,12 @@ class Command(BaseCommand):
             try:
                 df = pd.read_csv(os.path.join(data_path, filename))
                 df[df['Year'] > 2015].to_sql('input_{}'.format(filename.lower().split('.')[0]), engine,
-                                             if_exists='fail', index=False, dtype=utils.get_column_types(df))
+                                             chunksize=10000, if_exists='fail',
+                                             index=False, dtype=utils.get_column_types(df))
             except Exception as e:
                 raise CommandError('Error getting file "%s".' % filename)
-
+            finally:
+                # Free up memory
+                del df
+                gc.collect()
             self.stdout.write(self.style.SUCCESS('Successfully uploaded CSV "%s".' % filename))
