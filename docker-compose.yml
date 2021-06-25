@@ -4,15 +4,14 @@ services:
 
   db:
     image: postgres
-    ports:
-      - 5400:5432
+    volumes:
+      - data:/home/data
     environment:
-      POSTGRES_DB: "road_safety"
-      POSTGRES_USER: "masteruser"
-      POSTGRES_PASSWORD: "n5pVTk2u"
+      POSTGRES_DB: road_safety
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
 
   django:
-    restart: always
     build: .
     command: bash -c "
         python traffic_accidents/manage.py setup_input
@@ -24,3 +23,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+
+volumes:
+  data:
+    external: true

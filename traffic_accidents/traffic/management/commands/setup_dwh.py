@@ -45,7 +45,7 @@ class Command(BaseCommand):
             df = pd.DataFrame(cursor.fetchall())
             # Add column names
             df.columns = [i[0].lower() for i in cursor.description]
-            df.to_sql('fact_accident_vehicle', engine, schema='dwh', if_exists='replace', index=False)
+            df.to_sql('fact_accident_vehicle', engine, if_exists='replace', index=False, chunksize=10000)
 
         except OperationalError:
             cursor.close()

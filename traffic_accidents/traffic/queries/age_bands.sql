@@ -1,7 +1,7 @@
 WITH age_bands AS (
     SELECT accident_index
          , age_band_of_driver
-    FROM dwh.fact_accident_vehicle
+    FROM fact_accident_vehicle
     WHERE age_band_of_driver <> 'Data missing or out of range'
 )
 SELECT 1 AS id

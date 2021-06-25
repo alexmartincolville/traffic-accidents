@@ -19,5 +19,4 @@ RUN kaggle datasets download tsiaras/predicting-profitable-customer-segments
 RUN unzip predicting-profitable-customer-segments.zip
 RUN rm -r predicting-profitable-customer-segments.zip
 
-COPY init-user-db.sh /docker-entrypoint-initdb.d
 COPY . .

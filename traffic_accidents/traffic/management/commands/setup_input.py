@@ -34,8 +34,8 @@ class Command(BaseCommand):
         for filename in os.listdir(data_path):
             try:
                 df = pd.read_csv(os.path.join(data_path, filename))
-                df.to_sql('input_{}'.format(filename.lower().split('.')[0]), engine, schema='input',
-                          if_exists='fail', index=False)
+                df[df['Year'] > 2015].to_sql('input_{}'.format(filename.lower().split('.')[0]), engine,
+                                             if_exists='fail', index=False, dtype=utils.get_column_types(df))
             except Exception as e:
                 raise CommandError('Error getting file "%s".' % filename)
 

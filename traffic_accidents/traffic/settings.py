@@ -78,16 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'road_safety',
-        'USER': 'masteruser',
-        'PASSWORD': 'n5pVTk2u',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'db',
         'PORT': 5432,
-        'TEST': {
-            'NAME': 'road_safety_test'
-        },
-        'OPTIONS': {
-            'options': '-c search_path=input,dwh'
-        }
     }
 }
 

@@ -1,7 +1,7 @@
 WITH vehicle_age AS (
     SELECT accident_index
          , age_of_vehicle
-    FROM dwh.fact_accident_vehicle
+    FROM fact_accident_vehicle
 )
 SELECT 1 AS id
      , COALESCE(age_of_vehicle, -1) AS age_of_vehicle

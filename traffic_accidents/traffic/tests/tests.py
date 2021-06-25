@@ -7,5 +7,4 @@ class SetupDbTest(TestCase):
 
     def test_setup_db(self):
         out = StringIO()
-        call_command('setup_db', stdout=out)
-        self.assertIn('Expected output', out.getvalue())
+        call_command('setup_dwh', stdout=out)

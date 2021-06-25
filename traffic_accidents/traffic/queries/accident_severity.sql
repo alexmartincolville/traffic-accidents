@@ -1,7 +1,7 @@
 WITH accident_severity AS (
     SELECT accident_index
          , accident_severity
-    FROM dwh.fact_accident_vehicle
+    FROM fact_accident_vehicle
 )
 SELECT 1 AS id
      , accident_severity
