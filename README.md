@@ -27,6 +27,9 @@ Get the host ip address to be able to see the django site on your browser.
 
 `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' api.django`
 
-You can now open your web browser with the previous output ip address on port 800.
+You can now open your web browser with the previous output ip address on port 8000.
+
+`https://<docker_ip>:8000`
+
 The data will be queried automatically as the image will start up a Django website which uses the queries in the *traffic/queries/* folder.
 Data quality could be ensured by the input to fact process, which acts like an ETL taking into account the latest two years of data in which *Accident_Index* is in both datasets, so data is actually insightful for both datasets.
