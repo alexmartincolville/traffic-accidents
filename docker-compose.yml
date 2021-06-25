@@ -16,6 +16,7 @@ services:
     command: bash -c "
         python traffic_accidents/manage.py setup_input
         && python traffic_accidents/manage.py setup_dwh
+        && python traffic_accidents/manage.py migrate
         && python traffic_accidents/manage.py runserver
       "
     container_name: api.django

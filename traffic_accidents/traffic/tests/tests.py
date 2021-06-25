@@ -1,10 +1,15 @@
-from io import StringIO
-from django.core.management import call_command
 from django.test import TestCase
+from traffic.models import InputAccidentInformation, FactAccidentVehicle
 
 
 class SetupDbTest(TestCase):
 
-    def test_setup_db(self):
-        out = StringIO()
-        call_command('setup_dwh', stdout=out)
+    def test_input(self):
+        q = InputAccidentInformation.objects.first()
+        self.assertTrue(q)
+
+    def test_dwh(self):
+        q = FactAccidentVehicle.objects.first()
+        self.assertTrue(q)
+
+

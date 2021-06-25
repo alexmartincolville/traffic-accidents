@@ -23,3 +23,5 @@ COPY . .
 
 RUN mv Accident_Information.csv traffic_accidents/traffic/data
 RUN mv Vehicle_Information.csv traffic_accidents/traffic/data
+
+EXPOSE 8000
