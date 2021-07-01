@@ -74,8 +74,10 @@ Description of the data insights is provided at the bottom of each chart.
 ### Tests
 
 A database connectivity test can be found in the `traffic_accidents/traffic/tests` folder. If the connection is successful, the test will pass.
+
 Data tests are performed via the Django Framework. There are three tests in the `traffic_accidents/traffic/tests` folder, which check for each table in the data whether they are populated or not.
 If the input tables are not populated, it would mean that the process that extracts data from Kaggle is not adding the data to the database, i.e. error in the Kaggle API or extracted CSVs are empty. If the input table already exists in the database, the pandas `to_sql` function will fail to update the table, as it should already be populated.
+
 If the fact table is empty, it would mean that the Django command experienced an issue when pulling the data from the input layer (the pandas DataFrame may thus be empty). Also, in this step, if the table is already existing (the `init` image has already been ran), the pandas `to_sql` function will replace the table with the data in the DataFrame.
 
 
