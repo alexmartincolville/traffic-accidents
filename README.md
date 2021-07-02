@@ -62,7 +62,11 @@ Your expected output should be a browser-based dashboard, where 4 different char
 
 If you wish to stop de web server, you can do so with the following command:
 
-`docker-compose down web`
+`docker-compose stop traffic.web`
+
+It can also be restart with:
+
+`docker-compose start traffic.web`
 
 
 ### Data Insights
