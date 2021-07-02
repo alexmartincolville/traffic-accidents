@@ -6,11 +6,7 @@ services:
     image: postgres
     container_name: traffic.db
     volumes:
-      - type: volume
-        source: data
-        target: /data
-        volume:
-          nocopy: true
+      - data:/traffic_accidents/traffic/data
     environment:
       POSTGRES_DB: road_safety
       POSTGRES_USER: postgres

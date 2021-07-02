@@ -28,12 +28,11 @@ This will use your Kaggle credentials to be able to download the data.
 
 You will also need to have [Docker](https://www.docker.com/get-started) installed.
 
-From here onwards, the process is fairly automated and you should follow the usage section to be able to emulate the ETL process and start visualising the insights given from the data.
-
+From here onwards, the process is fairly automated, and you should follow the usage section to be able to emulate the ETL process and start visualising the insights given from the data.
 
 ### Usage
 
-The docker-compose file should leverage the postgres and application images. It also creates a dependency schema, 
+The docker-compose file should leverage the postgres and application images. It also creates a dependency schema, where the init service (which initialises the data) depends on the database being in place. 
 Build the Docker compose file:
 
 `docker-compose build`
@@ -42,6 +41,7 @@ Start the postgres database service (we can detach this with -d):
 
 `docker-compose up -d db`
 
+On the first invocation of `docker-compose up` the `data` volume will be created. The same volume will be reused on following invocations.
 Initialise the Python image with the Django website. This can also be detached, although we can then see the progress of the database tables being created and populated.
 
 `docker-compose up init`
