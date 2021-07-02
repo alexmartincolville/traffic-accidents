@@ -1,15 +1,18 @@
-from django.test import TestCase
-from traffic.models import InputAccidentInformation, FactAccidentVehicle
+from unittest import TestCase
+from django.db import connections
+from traffic.models import InputAccidentInformation, InputVehicleInformation, FactAccidentVehicle
 
 
 class SetupDbTest(TestCase):
 
-    def test_input(self):
-        q = InputAccidentInformation.objects.first()
-        self.assertTrue(q)
+    def test_connection(self):
+        self.assertIsNot(connections['default'], None)
 
-    def test_dwh(self):
-        q = FactAccidentVehicle.objects.first()
-        self.assertTrue(q)
+    def test_input_accidents(self):
+        self.assertTrue(InputAccidentInformation.objects.exists())
 
+    def test_input_vehicle(self):
+        self.assertTrue(InputVehicleInformation.objects.exists())
 
+    def test_fact(self):
+        self.assertTrue(FactAccidentVehicle.objects.exists())

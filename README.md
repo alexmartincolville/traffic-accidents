@@ -60,6 +60,10 @@ Data quality could be ensured by the input to fact process, which acts like an E
 
 Your expected output should be a browser-based dashboard, where 4 different charts will appear.
 
+If you wish to stop de web server, you can do so with the following command:
+
+`docker-compose down web`
+
 
 ### Data Insights
 
@@ -79,6 +83,14 @@ Data tests are performed via the Django Framework. There are three tests in the 
 If the input tables are not populated, it would mean that the process that extracts data from Kaggle is not adding the data to the database, i.e. error in the Kaggle API or extracted CSVs are empty. If the input table already exists in the database, the pandas `to_sql` function will fail to update the table, as it should already be populated.
 
 If the fact table is empty, it would mean that the Django command experienced an issue when pulling the data from the input layer (the pandas DataFrame may thus be empty). Also, in this step, if the table is already existing (the `init` image has already been ran), the pandas `to_sql` function will replace the table with the data in the DataFrame.
+
+Tests can be triggered by opening up a bash CLI in the image with the following commmand:
+
+`docker exec -it traffic.web bash`
+
+And running the Django tests from the `traffic_accidents/` directory:
+
+`python manage.py test`
 
 
 ### Contributions
