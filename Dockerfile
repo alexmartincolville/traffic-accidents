@@ -21,6 +21,8 @@ RUN rm -r predicting-profitable-customer-segments.zip
 
 COPY . .
 
+RUN mkdir traffic_accidents/traffic/data
+
 RUN mv Accident_Information.csv traffic_accidents/traffic/data
 RUN mv Vehicle_Information.csv traffic_accidents/traffic/data
 
