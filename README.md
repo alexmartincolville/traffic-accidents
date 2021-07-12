@@ -53,7 +53,7 @@ Run the Django server once the previous step has finished.
 Booting up the Django site with the *runserver* command should initialise the website and show the data insights.
 You are now be able to see the django site on your browser hosted in localhost:
 
-`https://127.0.0.1:8000`
+`http://127.0.0.1:8000`
 
 The data will be queried automatically as the image will start up a Django website which uses the queries in the *traffic/queries/* folder.
 Data quality could be ensured by the input to fact process, which acts like an ETL taking into account the latest two years of data in which *Accident_Index* is in both datasets, so data is actually insightful for both datasets.
